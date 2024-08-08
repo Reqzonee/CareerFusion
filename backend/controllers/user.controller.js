@@ -12,7 +12,9 @@ export const register = async (req, res) => {
         message: "Something is missing",
       });
     }
+    console.log("hello");
     const file = req.file;
+    console.log("req . file is  ", file);
     const fileUri = getDataUri(file);
     const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
     const user = await User.findOne({ email });
