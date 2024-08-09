@@ -10,13 +10,24 @@ const useGetAllJobs = () => {
     useEffect(()=>{
         const fetchAllJobs = async () => {
             try {
-                const res = await axios.get(`${JOB_API_END_POINT}/get?keyword=${searchedQuery}`,{withCredentials:true});
-                console.log("res is ", res);
-                if(res.data.success){
-                    dispatch(setAllJobs(res.data.jobs));
+                const res = await fetch(`${JOB_API_END_POINT}/get?keyword=${searchedQuery}`, {
+                    method: 'GET',
+                    credentials: 'include', // This is equivalent to axios' withCredentials: true
+                    headers: {
+                      'Content-Type': 'application/json',
+                      // Add any other headers here that you might need
+                    },
+                  });
+                  const data = await res.json();
+                if(data.success){
+                    dispatch(setAllJobs(data.jobs));
                 }
+                else {
+                    console.log("API call was not successful", data.message);
+                }
+
             } catch (error) {
-                console.log(error);
+                console.error("Error fetching jobs: ", error);
             }
         }
         fetchAllJobs();

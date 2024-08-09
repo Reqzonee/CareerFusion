@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 const LatestJobCards = ({job}) => {
     const navigate = useNavigate();
-    console.log("company name is ", job.company.name);
+    // console.log("company name is ", job.company.name);
     return (
         <div onClick={()=> navigate(`/description/${job._id}`)} className='p-5 rounded-md shadow-xl bg-white border border-gray-100 cursor-pointer'>
             <div>

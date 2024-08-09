@@ -17,6 +17,7 @@ const CompanyCreate = () => {
   const registerNewCompany = async () => {
     console.log("Inside company creation");
     // console.log("end point is ", companyName);
+    console.log("create comapny api endpoint is ", `${COMPANY_API_END_POINT}/register`);
     try {
       const response = await fetch(`${COMPANY_API_END_POINT}/register`, {
         method: "POST",
