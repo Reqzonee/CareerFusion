@@ -9,5 +9,4 @@ router.route("/get").get(getAlljobs);
 router.route("/getadminJobs").get(isAuthenticated, getAdminJobs);
 router.route("/get/:id").get(isAuthenticated, getJobById);
 
-
 export default router;
